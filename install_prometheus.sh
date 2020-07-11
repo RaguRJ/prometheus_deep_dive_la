@@ -10,7 +10,7 @@ sudo mkdir /etc/prometheus /var/lib/prometheus
 
 # download and extract the pre-compiled binaries
 wget https://github.com/prometheus/prometheus/releases/download/v2.16.0/prometheus-2.16.0.linux-amd64.tar.gz
-tar xzf prometheus-2.16.0.linux-amd64.tar.gz prometheus-2.16.0.linux-amd64/
+tar xzvf prometheus-2.16.0.linux-amd64.tar.gz prometheus-2.16.0.linux-amd64/
 
 # Move the files from the downloaded archive to the appropriate locations and set ownership
 sudo cp prometheus-2.16.0.linux-amd64/{prometheus,promtool} /usr/local/bin/
@@ -19,12 +19,11 @@ sudo cp -r prometheus-2.16.0.linux-amd64/{consoles,console_libraries} /etc/prome
 sudo cp prometheus-2.16.0.linux-amd64/prometheus.yml /etc/prometheus/prometheus.yml
 sudo chown -R prometheus:prometheus /etc/prometheus
 sudo chown prometheus:prometheus /var/lib/prometheus
-prometheus --config.file=/etc/prometheus/prometheus.yml
 
 # Verification command - running prometheus in the background
-green
-prometheus --config.file=/etc/prometheus/prometheus.yml
-nc
+# green
+# prometheus --config.file=/etc/prometheus/prometheus.yml
+# nc
 
 # Running prometheus as a daemon
 sudo cat > /etc/systemd/system/prometheus.service <<EOF
